@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function changeColor(){
+	//html 요소 접근
+	vcol = document.querySelector('#col');
+// 	vcol = document.getElementById('col')
+	
+	//값 가져오기
+	cvalue = vcol.value;
+	 //콘솔은또먼데??? f12눌러서 나오는 창 중에 console임!
+	console.log(cvalue);
+	
+	
+	//연산, 계산, 비교, 반복...
+	
+	//출력요소 접근
+	vform = document.querySelector('#ff');
+	 //자바스크립트에서는 동적인 스타일이 된다. background-color이 아니라 backgroundColor라고 쓴다.
+	vform.style.backgroundColor = cvalue
+	
+}
+</script>
+<style type="text/css">
+/*정적인, 고정된 style*/
+ form{
+  background-color: lightyellow;
+ }
+</style>
+
+</head>
+<body>
+<form id="ff" action = "타입.jsp" method="post">
+ <label>이름</label>
+ <input type = "text" name = "name" id="name"> <br>
+ 
+ 
+ <label>이메일</label>
+ <input type = "email" name = "email" id="email"> <br>
+ 
+ 
+ <label>전화번호</label>
+ <input type = "tel" name = "tel" id="tel"> <br>
+ 
+ <label>생일</label>
+ <input type = "date" name = "bir" id="bir"> <br>
+ 
+ <br>
+ <label>색상변경</label>
+ <input type="color" name="col" id="col" onchange="changeColor()"><br>
+ <br>
+ 
+<!--  이건 걍 그림이고 -->
+ <img src="../images/check.png" alt="check.png"><br>
+ 
+<!--  이건 submit과 같은 기능을 하는 이미지다. -->
+ <input type="image" src="../images/check.png" alt="check.png">
+ <input type="submit" value="전송1">
+ <input type="reset" value = "초기화1">
+ <br> <br>
+ 
+ <button type="submit"> 전송 </button>
+ <button type="reset"> 초기화 </button>
+ <button type = "button"> 확인 </button>
+<!--  <button type="submit"> <img src="../images/check.png" alt="check.png"> </button> -->
+ 
+</form>
+</body>
+</html>

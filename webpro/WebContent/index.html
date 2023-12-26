@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+body * {
+	box-sizing: border-box;
+}
+
+div.dd { /*덧씌워짐문제를 해결하기 위해 클래스를 주고 [태그].클래스라고 기술하면 된다.*/
+	border: 2px outset lightblue;
+	width: 20%;
+	height: 300px;
+	margin: 5px;
+	float: left;
+}
+
+#title{
+/*id를 줬지만 얘도 div는 div기 때문에 뒤에 div속성이 또있으면 덮어씌워짐당한다.
+[태그]#id형식으로 기술한다.*/
+ border: 3px outset lightblue;
+ padding: 10px;
+ margin: 5px;
+ text-align: center;
+ width: 90%;
+}
+
+
+h4 {
+	border: 1px solid gray;
+	margin: 10px;
+	background-color: #faf1a4;
+}
+
+#head{
+
+background-image: url("./images/elizabeth-lies-ZWPerNlqUu0-unsplash.jpg");
+background-size: cover;
+text-align: center;
+border : 1px solid white;
+padding : 80px;
+margin: 10px;
+font-style: italic;
+color: white;
+width: 90%;
+height: 30%;
+}
+
+
+</style>
+</head>
+<body>
+
+<div id = "head">
+<h1>WELLCOME-SY</h1>
+</div>
+
+	<div id = "title">
+	 
+	<a href="http://192.168.142.6/webpro/index.html">김병수</a>
+	<a href="http://192.168.142.33/webpro/index.html">나성진</a>
+	<a href="http://192.168.142.19/webpro/index.html">박건태</a>
+	<a href="http://192.168.142.16/webpro/index.html">박성민</a>
+	<a href="http://192.168.142.20/webpro/index.html">박소영</a>
+	<a href="http://192.168.142.4/webpro/index.html">박승준</a>
+	<a href="http://192.168.142.22/webpro/index.html">신의정</a>
+	<a href="http://192.168.142.18/webpro/index.html">유하늘</a>
+	<a href="http://192.168.142.21/webpro/index.html">이기현</a>
+	<a href="http://192.168.142.38/webpro/index.html">이성경</a>
+	<a href="http://192.168.142.32/webpro/index.html">장민우</a>
+	<a href="http://192.168.142.37/webpro/index.html">정성윤</a>
+	<a href="http://192.168.142.5/webpro/index.html">조성훈</a>
+	<a href="http://192.168.142.17/webpro/index.html">한요한</a>
+	<a href="http://192.168.142.26/webpro/index.html">홍수지</a>
+	<a href="http://192.168.142.15/webpro/index.html">황지훈</a>
+	
+	</div>
+
+
+	<div class = "dd">
+		<h4>1219</h4>
+		<!--  ./ 같은위치, ../한단계 위로 올라간다는 얘기. -->
+		<!--  a href = "http://192.168.142.20/webpro/1219/pre태그.html" 라고도 쓸 수 있다.
+다만, 이럴 경우 내컴에서만 쓸수있겠지-->
+		<ul>
+
+			<li><a href="http://192.168.142.20/webpro/1219/pre태그.html">pre태그.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/리스트항목ol.html">리스트항목ol.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/리스트항목ul.html">리스트항목ul.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/링크a태그.html">링크a태그.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/제목과문단.html">제목과문단.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/제목과문단2.html">제목과문단2.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/제목과문단3.html">제목과문단3.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1219/특수문자.html">특수문자.html</a></li>
+
+		</ul>
+	</div>
+
+	<div class = "dd">
+		<h4>1220</h4>
+		<ul>
+
+			<li><a href="http://192.168.142.20/webpro/1220/iframe작성.html">iframe작성.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1220/연습01.html">연습01.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1220/table병합.html">table병합.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1220/table작성2.html">table작성2.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1220/table작성1.html">table작성1.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1220/이미지표현.html">이미지표현.html</a></li>
+		</ul>
+	</div>
+	
+	<div class = "dd">
+		<h4>1221</h4>
+		<ul>
+
+			<li><a href="http://192.168.142.20/webpro/1221/폼입력1.html">폼입력1.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1221/폼입력2.html">폼입력2.html</a></li>
+<!-- 			<li><a href="http://192.168.142.20/webpro/1221/입력1.jsp">입력1.jsp</a></li> -->
+<!-- 			<li><a href="http://192.168.142.20/webpro/1221/입력2.jsp">입력2.jsp</a></li> -->
+			<li><a href="http://192.168.142.20/webpro/1221/오디오.html">오디오.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1221/비디오.html">비디오.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1221/flex레이아웃.html">flex레이아웃.html</a></li>
+		</ul>
+	</div>
+	
+	<div class = "dd">
+		<h4>1222</h4>
+		<ul>
+
+			<li><a href="http://192.168.142.20/webpro/1222/form버튼.html">form버튼.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1222/form타입.html">form타입.html</a></li>
+<!-- 			<li><a href="http://192.168.142.20/webpro/1222/타입.jsp">타입.jsp</a></li> -->
+<!-- 			<li><a href="http://192.168.142.20/webpro/요소접근방법">요소접근방법</a></li> -->
+		</ul>
+	</div>
+	
+	<div class = "dd">
+		<h4>1226</h4>
+		<ul>
+
+			<li><a href="http://192.168.142.20/webpro/1226/form입력3.html">form입력3.html</a></li>
+			<li><a href="http://192.168.142.20/webpro/1226/연습.html">연습.html</a></li>
+<!-- 			<li><a href="http://192.168.142.20/webpro/1226/입력3.jsp">입력3.jsp</a></li> -->
+		</ul>
+	</div>
+
+</body>
+</html>

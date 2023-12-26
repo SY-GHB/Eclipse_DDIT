@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+table{
+ border : 2px solid blue;
+ margin: 20px auto;
+}
+
+td{
+width: 150px;
+height: 40px;
+text-align: center;
+}
+
+#tab2{
+ border: 3px outset lightblue;
+ margin: 20px auto;
+}
+
+.mod{
+background-color: lightyellow;
+}
+
+caption{
+/*  border: 1px solid blue; */
+ margin: 10px auto;
+ padding: 10px;
+ font-size: 1.2rem;
+ font-style: italic;
+ font-weight: bold;
+ color: lightblue;
+ letter-spacing: 10px;
+/*  caption-side: bottom; /*top이 기본이고 bottom이 바닥*/ */
+}
+
+</style>
+
+
+</head>
+<body>
+<table border="1" id = "tab1">
+ <tr>
+ <td>1</td>
+ <td>2</td>
+ <td>3</td>
+ </tr>
+ 
+ 
+ <tr>
+ <td rowspan = "2">1</td>
+ <td>2</td>
+ <td>3</td>
+ </tr>
+ 
+ 
+ <tr>
+ <td>1</td>
+ <td>2</td>
+ </tr>
+ 
+ 
+ <tr>
+ <td colspan = "3">1</td>
+ </tr>
+ </table>
+ 
+ <table border="1" id = "tab2">
+ <caption> ♥시간표♥ </caption>
+ <tr>
+ <td colspan = "2" class = "mod">1</td>
+ <td colspan = "2" class = "mod">2</td>
+ <td>3</td>
+ <td>4</td>
+ </tr>
+ 
+ 
+ <tr>
+ <td colspan = "4" class = "mod">1</td>
+ <td colspan = "2" class = "mod">2</td>
+ </tr>
+ 
+ 
+ <tr>
+ <td colspan = "4" class = "mod">1</td>
+ <td colspan = "4" rowspan = "2" class = "mod">2</td>
+ </tr>
+ 
+ <tr>
+ <td>1</td>
+ <td>2</td>
+ <td>3</td>
+ <td>4</td>
+ </tr>
+ 
+ </table>
+ 
+</body>
+</html>
