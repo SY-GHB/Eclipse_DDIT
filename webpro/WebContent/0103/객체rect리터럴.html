@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+//객체 선언
+rect = {
+	garo : 10,
+	sero : 13, 
+	//축약방식
+	getArea() {
+		return this.garo * this.sero;
+	},
+	getCircum(){
+		return (this.garo + this.sero)*2;
+	}
+// 	getArea : function(){
+		
+// 	},
+// 	getCircum: function(){
+		
+// 	}
+}
+//함수출력을 위한 함수
+printObj=(out)=>{
+	
+	//출력내용
+	str = `이름: ${rect.name}<br>`;
+	str += `가로: ${rect.garo}<br>`;
+	str += `세로: ${rect.sero}<br>`;
+	//변수를 안 받고 직접 rect의 함수를 호출할수도 있다.
+	str += `면적: ${rect.getArea()}<br>`;
+	str += `둘레: ${rect.getCircum()}<br>`;
+	
+	
+// 	vArea = rect.getArea();
+// 	vCircum = rect.getCircum();
+	
+// 	str += `면적: ${vArea}<br>`
+// 	str += `둘레: ${vCircum}<br>`
+	
+	document.getElementById(out).innerHTML = str;
+}
+
+proc1=()=>{
+	
+	rect.name = "네모"; //필드의 동적추가
+	printObj('result1');
+}
+
+proc2=()=>{
+	//가로,세로,이름 입력  - 입력값을 rect의 속성에 대입(동적 추가)
+	//입력받은값은 String이니까 항상 바꿔주자.
+	rect.garo= parseInt(prompt("가로 입력"));
+	rect.sero= parseInt(prompt("세로 입력"));
+	rect.name= prompt("이름 입력");
+	
+	//출력
+	printObj('result2');
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+</body>
+</html>

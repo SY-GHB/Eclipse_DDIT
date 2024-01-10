@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+proc1 = () => {
+		str="";
+	while(true){
+		//입력
+		su = prompt("구구단 수를 입력");
+		
+		str+=`<br>****${su}단****<br><br>`;
+		//구구단 작성 - for문이어야겟죠
+		for (i = 1; i <10; i++) {
+// 			str += su + "*" + i + "=" + (su*i) + "<br>";
+			str += `${su} * ${i} = ${su*i} <br>`;
+		}
+		
+		//출력-브라우저의 출력이 아니라서 (보이진않는다는의미) 함수가 끝나야 보이기때문에 break다음에 잇어도 된다.
+		document.getElementById('result1').innerHTML = str;
+		
+		
+		//confirm()함수 호출
+		ss = confirm("계속 하겠습니까?");
+		if(!ss) break; //어차피 무한루프라 continue조건을 안줘도 된다.
+	}
+	
+	//출력을 여따해보자.
+// 	document.getElementById('result1').innerHTML = str;
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>prompt()함수를 이용하여 수를 입력<br>
+ 해당 수에 해당하는 구구단을 출력.<br>
+ 계속 여부를 confirm함수를 이용한다.</h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+</body>
+</html>

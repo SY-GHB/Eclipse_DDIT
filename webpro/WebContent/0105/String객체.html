@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+str = "I Love Korea Happy New Year";
+//korea를 떼오고 싶다면 substring(7,12) (12는 포함안되니까)
+//slice(7,12)
+//substr(7,5)
+proc1=()=>{
+	
+	
+	res = `전체 문자열: ${str}<br>`;
+	txt = str.substring(13);	//시작위치만 정해주면 시작위치 뒤를 다 자른다.
+	console.log(txt);
+	
+	res += `str.substring(13)로 추출한 문자열: ${txt}`;
+	
+	document.querySelector('#result1').innerHTML = res;
+}
+
+proc2=()=>{
+	
+	res = `전체 문자열: ${str}<br>`;
+	txt = str.substr(-14, 26);	//시작위치만 정해주면 시작위치 뒤를 다 자른다.
+	res += `str.substr(-14, 26)로 추출한 문자열: ${txt}<br>`;
+	res += `substr은 음수(뒤에서부터의 인덱스)가 유효하다. 뒤에서부터 세는 인덱스는 1부터 센다.`
+	document.querySelector('#result2').innerHTML = res;
+	
+}
+
+proc3=()=>{
+	res = `전체 문자열: ${str}<br>`;
+	txt = str.slice(-14);	//음수
+	res += `str.slice(-14)로 추출한 문자열: ${txt}<br>`;
+	res += `slice는 음수(뒤에서부터의 인덱스)가 유효하다. 뒤에서부터 세는 인덱스는 1부터 센다.`
+	document.querySelector('#result3').innerHTML = res;
+	
+}
+
+proc4=()=>{
+	// split(separator, limit)
+	//구분자로 구분된 문자열을 분리하여 배열로 반환한다. 
+	//Limit는 최대 몇 개까지 반환할 것인가를 지정한다.
+	arr= str.split(" ")
+	
+	console.log(str.toUpperCase());
+	
+	vtxt = "";
+	for (i = 0; i <str.length; i++) {
+		vtxt += i+"번째: "+ str[i]+"<br>";
+	}
+	
+	document.getElementById('result4').innerHTML = vtxt;
+	//여기까지는 글자의 인덱스를 찍었다.
+	
+	vtxt = ""; //배열만 보려고 위의 내용을 초기화해줬다.
+	for (i = 0; i <arr.length; i++) {
+		vtxt += `${i}번째: ${arr[i]} <br>`;
+	}
+	//이건 배열의 인덱스를 찍었고.
+	
+	document.getElementById('result4').innerHTML = vtxt;
+	
+	
+}
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>str = "I Love Korea Happy New Year" <br>
+ Happy New Year 문자열 추출</h4>
+ <input type="button" value="substirng" onclick="proc1()">
+ <input type="button" value="substr" onclick="proc2()">
+ <input type="button" value="slice" onclick="proc3()">
+ <br><br>
+ <div id="result1"></div>
+ <div id="result2"></div>
+ <div id="result3"></div>
+</div>
+
+<div class="box">
+ <h4>split 문자열을 배열로 변환하기</h4>
+ <input type="button" value="split" onclick="proc4()">
+ <br><br>
+ <div id="result4"></div>
+</div>
+</body>
+</html>

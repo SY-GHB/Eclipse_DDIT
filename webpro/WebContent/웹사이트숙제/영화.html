@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function video(vs){
+	//ifrm이라는 아이디를 가진 요소를 vifrm이라는 변수에 담앗다.
+	vifrm = document.getElementById('ifrm');
+	
+	//vifrm의, 즉 ifrm의 src속성에 vs를 넣어준다는 의미다.
+	vifrm.src = vs;
+}
+</script>
+<style>
+body article{
+ border: 1px solid lightgray;
+ width: 25%;
+ height: 90%;
+ margin: 10px auto;
+}
+
+article{
+ padding: 20px;
+}
+iframe{
+ position: relative;
+ align-content: center;
+}
+
+section{
+ display: flex;
+ flex-direction: column;
+}
+
+#artdiv{
+ display: flex;
+ flex-direction: row;
+}
+
+p{
+ width: 80%;
+ height: 40%;
+}
+
+article img{
+ width: 90%;
+ height: 90%;
+}
+
+</style>
+</head>
+<body>
+<section>
+<iframe id="ifrm" name="ifrm" width="560" height="315" 
+title="YouTube video player"></iframe> 
+
+
+<div id="artdiv">
+<article id="art1">
+ <img src="../images/영화1.jpg" alt="영화1.jpg" onclick="video('../multi/movie.ogv')">
+</article>
+
+<article id="art2">
+ <img src="../images/영화2.jpg" alt="영화2.jpg" onclick="video('../multi/trailer.mp4')">
+</article>
+
+<article id="art3">
+<a href="https://www.youtube.com/embed/xqvBk0Hhzp0?si=Dx0DPB8_1XINTkQV" target="ifrm"><img src="../images/짬뽕이.jpg" alt="짬뽕이.jpg"></a>
+</article>
+</div>
+
+
+
+</section>
+</body>
+</html>

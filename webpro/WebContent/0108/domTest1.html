@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+proc1 = () =>{
+	vu1 = document.getElementById('u1');
+	list = vu1.getElementsByTagName('li');
+	
+	str = "";
+	for (i = 0; i < list.length; i++) {
+		alert(list[i].firstChild.data);
+		str += list[i].firstChild.data +"<br>";
+	}
+	
+	document.querySelector('#result1').innerHTML = str;
+}
+
+proc2=()=>{
+	
+	vu2 = document.querySelector('#u2');
+	list = vu2.querySelectorAll('li');
+	
+	for (i = 0; i < list.length; i++) {
+		txt = list[i].firstChild.data;
+		
+		
+		vimg = document.createElement('img');
+		vimg.src="../images/" + txt;
+		vimg.alt= txt;
+		
+		list[i].appendChild(vimg);
+	}
+}
+
+//매개변수가 하나일 때는 괄호를 생략할수도 있다.
+proc3= pimg =>{
+	vdata = pimg.firstChild.data
+	
+	vimg = document.createElement('img');
+	vimg.src="../images/" + vdata;
+	vimg.alt = vdata;
+	vimg.style.borderRadius = "50%";
+	
+	pimg.appendChild(vimg);
+}
+
+window.onload=function(){
+	//getElementById에서는 부모자식관계 등을 기술할 수 없다.
+	// querySelector는 된다
+	
+	//접근 검색
+	list = document.querySelectorAll('#u4 li');
+	//이벤트 등록
+	for (i = 0; i < list.length; i++) {
+	/*	//addEventListener - 이벤트가 발생하는지 찾음?
+		list[i].addEventListener('click', function(){
+			//기능구현	
+		}*/
+		
+		//newImg() 하면 함수의 결과값이 들어온다.
+		//newImg여야 함수가 참조된다.
+		list[i].addEventListener('click', newImg)
+		
+	}
+}
+
+
+newImg= function(){
+	//this: 클릭한 li객체- list[i]가 된다. 그래서 람다함수안썻다.
+	//li객체의 text값 가져오기-li안에 문자가 하나밖에없음:firstChild-그안의데이터를가져와야하니까.data
+	livalue = this.firstChild.data;
+	
+	vimg = document.createElement('img');
+	vimg.src = "../images/"+livalue;
+	vimg.alt = livalue;
+	
+	this.appendChild(vimg);
+}
+
+</script>
+<style>
+ img{
+   width: 120px;
+   height: 120px;
+ }
+</style>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <ul id="u1">
+  <li>List Item1</li>
+  <li>List Item2</li>
+  <li>List Item3</li>
+  <li>List Item4</li>
+  <li>List Item5</li>
+ </ul>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <ul id="u2">
+  <li>짬뽕이.jpg</li>
+  <li>아메리카노.jpg</li>
+  <li>에스프레소.jpg</li>
+  <li>수국.jpg</li>
+  <li>사막.jpg</li>
+ </ul>
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+<div class="box">
+ <h4>&lt;li onclick="proc3(this)">&lt;/li> <br>  각 li요소에 onclick=""을 줬다.</h4>
+ <ul id="u3">
+  <li onclick="proc3(this)">짬뽕이.jpg</li>
+  <li onclick="proc3(this)">아메리카노.jpg</li>
+  <li onclick="proc3(this)">에스프레소.jpg</li>
+  <li onclick="proc3(this)">수국.jpg</li>
+  <li onclick="proc3(this)">사막.jpg</li>
+ </ul>
+ <br><br>
+ <div id="result3"></div>
+</div>
+
+
+<div class="box">
+ <h4>js에서 일괄적으로 이벤트 핸들러를 구현한다.</h4>
+ li객체[index].addEventListener('click', newImg)<br>
+ newImg: 함수이름, 참조값만 전달, 호출방식이 아니다!!
+ <ul id="u4">
+  <li>짬뽕이.jpg</li>
+  <li>아메리카노.jpg</li>
+  <li>에스프레소.jpg</li>
+  <li>수국.jpg</li>
+  <li>사막.jpg</li>
+ </ul>
+ <br><br>
+ <div id="result4"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+
+<script>
+now = new Date();
+function proc1(){
+	//입력
+	input = prompt("주민번호 입력", "110326-4123456");
+	
+	//추출
+	yy = input.substr(0,2);
+	mm = input.substr(2,2);
+	dd = input.substr(4,2);
+	gend = input.substr(7,1);
+	
+	//비교
+	if(gend=="1"||gend=="3") gender = "남자";
+	else if(gend=="2"||gend=="4") gender = "여자";
+	
+	if(gend=="1"||gend=="2"){
+		yy= "19"+yy;
+		age = now.getFullYear() - parseInt(yy);
+	} 
+	else if(gend=="3"||gend=="4") {
+		yy = "20"+yy;	
+		age = now.getFullYear() - parseInt(yy);
+	}
+	
+	//출력내용
+	str = `주민번호 ${input.substring(0,8)}****** <br> 생일: ${yy}년 ${mm}월 ${dd}일<br> 성별: ${gender} <br> 나이: ${age}`
+	
+	document.getElementById('result1').innerHTML = str;
+	
+}
+
+proc2=()=>{
+	multi = "234567892345";
+	sum = 0;
+	input = prompt("주민번호 입력", "110326-4123456");
+	
+	// -을 ""으로 치환(뺀다고.)
+	reinput = input.replace("-", "");
+	
+	for (i = 0; i <multi.length; i++) {
+		sum += multi[i] * reinput[i];
+	}
+	
+	vsum = 11-(sum%11);
+	vsum = vsum%10;
+	
+	console.log(vsum);
+	console.log(reinput.substr(-1));
+	
+	if(reinput.substr(-1)==vsum) res = "유효한 주민등록번호입니다.";
+	else res = "유효하지 않은 주민등록번호입니다.";
+	
+	document.getElementById('result2').innerHTML = res;
+	
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>prompt로 주민등록번호를 입력 받아 생년월일과 성별, 나이를 출력하는 프로그램을 작성하시오.</h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4>주민등록번호를 입력 받아 주민등록번호의 유효성을 검사하는 프로그램을 작성하시오.(ABCDEF-GHIJKLM)</h4>
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+</body>
+</html>

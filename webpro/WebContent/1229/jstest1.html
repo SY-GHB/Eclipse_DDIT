@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+	border: 1px dotted orange;
+	padding: 10px;
+}
+</style>
+<script>
+function fprint(num, name){
+	//입력받은 id의 값을 가져온다. - id=id인 요소에 접근
+	var vid = document.getElementById('id');
+	// let으로는 중복선언할 수 없다. 변수가 중복될 위험성이 있다고 생각하면 let을 쓰자.
+	// var과 let을 쓰는 건 지역변수, 안 쓰는 건 전역변수(여러 함수에서 사용가능).
+// 	var vid = document.querySelector('#id');
+	
+	
+	var idvalue = vid.value;
+	
+	//처리한 후 처리결과를 출력한다.
+	var str = "";
+	str += "당신이 입력한 id는 " + idvalue + "입니다.";
+	
+// 	document.write(str); //페이지를 덮어써버린다. 뒤로가기도안되고 새탭으로열리지도 않는다.
+// 	console.log(str);
+// 	alert(str);
+
+	//출력장소에 접근하기
+	vres = document.querySelector('#result');
+	
+	vres.innerText = str
+}
+</script> 
+</head>
+<body>
+<input type="text" id="id" name="id" placeholder="ID입력 후 확인을 누르세요."><br>
+<!-- jsp로 넘어갈 때 name이 필요함, id는 script에 필요하다. -->
+<input type="button" value="확인" onclick="fprint()">
+
+<br><br>
+<div id= "result" ></div>
+</body>
+</html>

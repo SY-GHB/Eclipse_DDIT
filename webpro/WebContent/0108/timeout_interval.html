@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+//body보다 script가 먼저 실행되므로 
+
+window.onload = function(){
+ res1 = document.getElementById('result1');
+ res2 = document.getElementById('result2');
+}
+
+proc1=()=>{
+	
+	//0~255사이 랜덤 발생(10진수)
+	ranR = Math.floor(Math.random()*256);
+	ranG = Math.floor(Math.random()*256);
+	ranB = Math.floor(Math.random()*256);
+	
+	//setTimeout ↓1초가 지난 후에 이 함수를 작동시킨다는얘기임
+	setTimeout(function(){
+		//10진수 컬러표현
+// 		res1.style.backgroundColor = `rgb(${ranR}, ${ranG}, ${ranB})`; 
+		
+		//16진수로 바꾸는 과정 - toString(16)
+		ranR16 = ranR.toString(16);
+		ranG16 = ranG.toString(16);
+		ranB16 = ranB.toString(16);
+		
+		res1.style.backgroundColor = "#"+ranR16+ranG16+ranB16; 
+	}, 1000);
+}
+
+proc2=(but)=>{
+	//but: 시작버튼 this를 파라미터로 받은 매개변수-지역변수
+	//람다함수를 쓰면 this의 대상이 바뀐다. 
+	//이거안됨, proc2 = function(){ this.style.display = "none";} 이랬을 때 먹힘
+	but.style.display = "none"; 
+	
+	//람다함수에서 this를 쓰고 싶다면 매개변수를 사용해야 한다. 함수 호출 시 this를 파라미터로 넘긴다.
+	
+	//but변수를 전역변수로 변경 - stop()에서 사용하가능하도록 만들자.
+	gbut = but;
+	
+	
+	//setInterval ↓1초가 지날 때마다 이 함수를 작동시킨다는 의미
+	//전역변수로 id라는 변수를 선언했다.
+	id = setInterval(function(){
+		
+		console.log(id);
+		//setInterval 돌때마다 랜덤수가 발생해야하니까 
+		//색 지정 코드를 함수 안에 넣어줘야 한다.
+		ranR2 = Math.floor(Math.random()*256);
+		ranG2 = Math.floor(Math.random()*256);
+		ranB2 = Math.floor(Math.random()*256);
+		
+		res2.style.backgroundColor = `rgb(${ranR2}, ${ranG2}, ${ranB2})`; 
+		
+	}, 300);
+}
+
+stop=()=>{
+	//실행종료
+	clearInterval(id);
+	
+	//시작버튼을 다시 보여주게 설정
+	//1. 시작버튼을 검색하기
+	
+	//2. 지역변수였던 but을 전역변수로 가져와서 사용하기
+	gbut.style.display = "inline";
+	
+}
+
+</script>
+
+<style>
+#result1, #result2{
+	height: 50px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <!-- onclick한 객체를 this로 받을 수 있다. -->
+ <!-- 람다함수에서는 this를 사용하려면 매개변수로 넘겨줘야 한다. -->
+ <input type="button" value="시작" id="start" onclick="proc2(this)">
+ <input type="button" value="종료" onclick="stop()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+</body>
+</html>

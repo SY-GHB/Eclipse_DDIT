@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+	now1 = new Date();
+	now2 = new Date(2000);
+	now3 = new Date("2000.04.25");
+	now4 = new Date(2000, 04, 25); //인덱스로 쓸 땐 월이 0부터 시작함을 기억해다.
+	
+	window.onload = function(){
+		//class가 여러개잇어도 하나만찾는게 쿼리셀렉터, 전부찾는건 querySelectorAll()
+		vbox = document.querySelector('.cbox');
+// 		vbox.innerHTML = now1.toLocaleString();
+
+		//1000ms초마다 function을 한번씩 수행한다는 의미임
+		//setInterval과 setTimeout의 차이점?
+		window.setInterval(function(){
+			now1 = new Date();
+			today = now1.toLocaleString();
+			vbox.innerHTML = today;
+		},1000);
+	}
+	
+	
+proc1=()=>{
+	str = "그리니치 평균시(GMT)를 기준으로 <br>";
+	str += now1 + "<br>";
+	str += now2 + "<br>";
+	str += now3 + "<br>";
+	str += now4 + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+	
+	str = now1.toLocaleString() + "<br>";
+	str += now2.toLocaleString() + "<br>";
+	str += now3.toLocaleString() + "<br>";
+	str += now4.toLocaleString() + "<br>";
+	
+	document.getElementById('result1').innerHTML = str;
+}
+
+proc2=()=>{
+	day = now1.getDay(); //0~6
+	
+	//비교
+	switch(day){
+	 case 0: day2 = "일요일"; break;
+	 case 1: day2 = "월요일"; break;
+	 case 2: day2 = "화요일"; break;
+	 case 3: day2 = "수요일"; break;
+	 case 4: day2 = "목요일"; break;
+	 case 5: day2 = "금요일"; break;
+	 case 6: day2 = "토요일"; break;
+	}
+	str = `day 인덱스: ${day} <br> 오늘은 ${now1.toLocaleString()},<br> ${day2}입니다.`;
+	
+	document.getElementById('result2').innerHTML = str;
+}
+
+proc3=()=>{
+	day = now1.getDay(); //0~6
+	
+	//비교
+	arr = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+	str = `day 인덱스: ${day} <br> 오늘은 ${now1.toLocaleString()},<br> ${arr[day]}입니다.`;
+	
+	document.getElementById('result3').innerHTML = str;
+	
+	vdate = now1.toLocaleDateString();
+	vtime = now1.toLocaleTimeString();
+	
+	console.log(vdate + "\n" + vtime);
+	
+}
+
+
+</script>
+
+<style type="text/css">
+.cbox{
+ height: 50px;
+ border: 5px inset red;
+ font-size: 1.5rem;
+}
+
+</style>
+</head>
+<body>
+
+<div class ="cbox">
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4>getDay(): 0(일요일)~6(토요일) 요일구하기</h4>
+ <input type="button" value="확인" onclick="proc2()">
+ <input type="button" value="확인" onclick="proc3()">
+ <br><br>
+ <div id="result2"></div>
+ <div id="result3"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+
+str3 = "korea3"
+function proc1(){
+	str = "korea";
+	var str2 = "korea2";
+	for(let i=1; i<10; i++){
+	//for문이 끝나면 i는 사용할 수 없다. var로 선언했으면 for이 끝나도 쓸 수 있다.	
+	}
+	
+	//ca는 어디에서도 바꿀 수 없다.
+	const ca=100;
+}
+
+// proc1 밑에 선언해서 2에만 사용할 수 있을 것 같지만... aa역시 전역변수다.
+// proc1랑 proc2는 작동이 안 할 수도 있지만, str3과 aa는 무조건 실행되니까!!
+var aa = "대한민국"
+
+function proc2(){
+	//proc1의 str은 전역변수이므로 proc2의 함수를 사용할 수 있다.
+	// 단, proc1가 먼저 수행되어야 str에 값이 선언되므로, proc1이 수행되어야 proc2가 수행될 수 있다. (종속적이다)
+	str출력
+	str = "hello"
+	
+	// str2는 proc1의 지역변수이므로 proc2에서 출력할 수 없다.
+	// str3은 var를 쓰든 let을 쓰든 안 쓰든 function보다 위에있으니 전역변수다.
+	
+}
+
+</script>
+
+<style>
+
+</style>
+</head>
+<body>
+<input type="button" value="확인" onclick="proc1()">
+</body>
+</html>

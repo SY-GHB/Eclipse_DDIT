@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+proc1=()=>{
+	
+	vhref = location.href;
+	vproto = location.protocol;
+	//host = hostname이랑 port를 같이가져옴
+	vhostname = location.hostname;
+	vport = location.port;
+	vhost = location.host;
+	
+	//출력내용 보기
+	str = `vhref = ${vhref} <br> vproto = ${vproto} <br> vhostname = ${vhostname} <br> vport=${vport} <br> vhost = ${vhost}`
+	document.getElementById('result1').innerHTML = str;
+}
+
+lohref = () =>{
+	location.href = "window_opener.html";
+}
+
+goPage=()=>{
+	//이름 입력
+	userName = prompt("이름 입력");
+	location.href = "loctest.jsp?name=" + userName;
+}
+
+goReload = () =>{
+	//result5에 랜덤으로 발생하는 문자열을 출력 
+	arr = ["Hello", "HappyNewYear", "FullSpeedAhead", "GoldenAgeWillReturnAgain", "BurnMeToTheGround", "예싸몬빠이아"];
+	
+	ran = Math.floor(Math.random()*arr.length);
+	console.log(ran);
+	
+	res = `<h1>${arr[ran]}</h1>`;
+	
+	vreout= document.getElementById('result5');
+	vreout.innerHTML = res;
+	vreout.style.color="red";
+	vreout.style.fontSize="2.0rem";
+	
+	setTimeout(function(){
+		location.reload();
+	}, 2000)
+	
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ 
+ 특정 페이지로 이동(버튼에서 직접): 
+ 
+ 특정 페이지로 이동(script 함수에서 지정):
+ <!-- href는 사이트 주소, html, jsp, servlet등이 올 수 있다. -->
+ <input type="button" value="페이지 이동" onclick="location.href ='timeout_interval.html'"> <br>
+ 특정 페이지로 이동(script 함수에서 지정):
+ <input type="button" value="페이지 이동" onclick="lohref()"> <br>
+ <br>
+ 
+<!--  <input type="button" value="확인" onclick="proc2()"> -->
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ a태그에서 location.href를 이용 <br><br>
+ 
+ 1. a태그의 기본 href="페이지"<br>
+ <a href="window_opener.html" target="_blank">새창열기</a> <br><br>
+ 
+ 2. a태그의 href에서 js함수 호출: jsp파일로 이동<br>
+ <a href="javascript: goPage()">새창열기</a><br><br>
+ 
+ 3. onclick에서 js함수 호출 - location.href: jsp파일로 이동<br>
+ <a href="#" onclick="goPage()">멤버리스트</a><br><br>
+ 
+ 4. onclick = "locatioin.href='주소'"<br>
+ <!-- name=korea 사이에 공백잇으면안됨. -->
+ <a href="#" onclick="location.href='loctest.jsp?name=korea'">멤버리스트</a><br><br>
+ <br><br>
+ <div id="result3"></div>
+</div>
+
+
+<div class="box">
+ <h4></h4>
+ <form action="loctest.jsp" method="get">
+ <input type= "hidden" name="name" value="홍길동">
+ <input type="submit" value="확인">
+ <input type="button" value="확인" onclick="location.href='loctest.jsp?name=강감찬'">
+ </form>
+ <br><br>
+ <div id="result4"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ 새로운 페이지 이동 - assign()
+ <!-- assign()은 히스토리가 있어 뒤로가기가 가능하지만 replace()는 불가함 -->
+ <input type="button" value="확인" onclick="location.assign('loctest.jsp?name=강감찬')">
+ <br><br>
+ 새로운 페이지 이동 - replace() 뒤로가기 불가능
+ <input type="button" value="확인" onclick="location.replace('loctest.jsp?name=강감찬')">
+  <br><br>
+ 현재문서를 다시 리로드 - reload()
+ <input type="button" value="확인" onclick="goReload()">
+ <div id="result5"></div>
+</div>
+
+</body>
+</html>

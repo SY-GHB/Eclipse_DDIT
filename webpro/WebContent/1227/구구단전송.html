@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+form{
+  width: 400px;
+  border: 3px solid gold;
+  padding: 30px;
+  margin: 30px auto;
+}
+#ip{
+  width: 80%;
+  margin:10px;
+}
+</style>
+</head>
+<body>
+<form action = "gugutable.jsp" method="get">
+<label>단 입력</label>
+<input type="text" pattern="[1-9]"  name="dan" placeholder="1-9범위의 숫자를 하나 입력하세요."><br>
+<input id="ip" type="submit" value="전송">
+</form>
+</body>
+</html>

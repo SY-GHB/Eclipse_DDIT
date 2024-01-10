@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+
+//랜덤으로 발생되는 문자 - 문자배열이 필요하겟지
+//모든 함수에서 조건없이 쓰기위해서 위에 올렷음.
+arr = ["그냥도 12인데 아지랑이를 먹이네", "happy기동", "폿지레드", "이거펌블이야", "6플롯에서 만나자", "우리꼴잘돌아간다", "6도 펌블인가요?", "아는데묻는겁니다하늘에..."];
+
+proc1 = function(){
+	//랜덤
+	ran = Math.floor(Math.random()*arr.length);
+	
+	//문자열 선택 arr[ran] - textNode로 생성
+	vtext = document.createTextNode(arr[ran]);
+	
+	//p태그 생성
+	parr = document.createElement('p');
+	
+	//부모p태그에 자식vtext를 추가
+	parr.appendChild(vtext);
+	
+	//result1에 추가
+	document.querySelector('#result1').appendChild(parr);
+}
+
+proc2=()=>{
+	//부모 검색 - result1
+	vparent = document.getElementById('result1');
+	
+	//삭제대상의 자식을 선택
+	vchild = vparent.firstChild;
+	
+	//삭제하기: 부모.removeChild(자식);
+	vparent.removeChild(vchild);
+}
+
+proc3 = () =>{
+	//랜덤
+	ran= Math.floor(Math.random()*arr.length);
+	
+	//문자열 선택 arr[ran] - textNode생성
+	vtext = document.createTextNode(arr[ran]);
+	
+	//input type = "button" value = "삭제"
+	//input 태그 생성
+	vinput = document.createElement('input');
+	vinput.type = "button";
+	vinput.value = "삭제";
+	vinput.onclick=function(){
+		//여기서 this는 onclick한 input객체가 됨-람다함수쓰면안됨
+		this.parentNode.remove();
+	}
+	
+	//p태그 생성
+	ptag = document.createElement('p');
+	
+	//p태그에 문자열 추가
+	ptag.appendChild(vtext);
+	
+	//p태그에 input버튼(vinput) 추가
+	ptag.appendChild(vinput);
+	
+	//result2를 검색해서 p태그 추가
+	document.querySelector('#result2').appendChild(ptag);
+	
+	//
+	
+}
+
+selImg = null;
+
+start = (but) =>{
+	// but: 시작버튼을 가져오는 매개변수(지역변수)
+	//시작버튼을 안 보 이도록 설정
+	but.style.display = "none";
+	if(selImg!=null){
+		selImg.style.border="none";
+	}
+	
+	gbut = but;
+	
+	id = setInterval(function(){
+		//부모
+		vres3 = document.querySelector('#result3');
+		//첫번째 이미지를 선택 -firstChild
+		vimg = vres3.firstChild;
+		//이미지 이동
+		vres3.appendChild(vimg);
+		
+	}, 50);
+	
+}
+
+stop = () => {
+	//시작버튼을 보이도록 설정
+	clearInterval(id);
+	gbut.style.display = "inline";
+	
+	
+	//전체 이미지 갯수
+	imgAll = document.querySelectorAll('#result3 img');
+	
+	//랜덤발생 - 이미지의 갯수만큼 : imgAll.lenght
+	ran2 = Math.floor(Math.random()*imgAll.length);
+	console.log(ran2);
+	
+	//이미지를 선택 imgAll[ran2]
+	selImg = imgAll[ran2];
+	
+	//테두리그려주기♡
+	selImg.style.border="10px solid gold";
+}
+
+
+</script>
+<style>
+img{
+  width: 150px;
+  height: 180px;
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <input type="button" value="삭제" onclick="proc2()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="추가삭제" onclick="proc3()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="시작" onclick="start(this)">
+ <input type="button" value="종료" onclick="stop()">
+ <br><br>
+ <div id="result3">
+ <img src="../images/고양이 (1).jpg" alt="고양이 (1).jpg">
+ <img src="../images/고양이 (2).jpg" alt="고양이 (2).jpg">
+ <img src="../images/고양이 (3).jpg" alt="고양이 (3).jpg">
+ <img src="../images/고양이 (4).jpg" alt="고양이 (4).jpg">
+ <img src="../images/고양이 (5).jpg" alt="고양이 (5).jpg">
+ <img src="../images/고양이 (6).jpg" alt="고양이 (6).jpg">
+ <img src="../images/고양이 (7).jpg" alt="고양이 (7).jpg">
+ </div>
+</div>
+</body>
+</html>

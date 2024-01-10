@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// //1번 방식
+// function proc1(){
+	
+// }
+// //2번방식
+// proc1 = function(){
+	
+// }
+
+//3번방식
+//화살표 함수(람다함수)라고 한다.
+proc1 = () => {
+	//숫자 2개를 입력받기. 1번씩 두번을 받아야 한다.
+	//파라미터로 하나는 써야한다.
+	var in1 = prompt("첫번째 수를 입력하세요." , "1~100 사이 정수.");
+	//console.log(in1);
+	var in2 = prompt("1~100사이 정수 입력");
+	
+	//연산
+	add = parseInt(in1)+parseInt(in2);
+	sub = in1-in2;
+	multi = in1*in2;
+	divide = in1 / in2;
+	
+	console.log(add, sub, multi, divide)
+	
+	//출력- 출력내용 작성
+	str = "첫번째 수: " + in1 + "<br>"; 
+	str += "두번째 수: " + in2 + "<br>"; 
+	str += "합: " + add + "<br>"; 
+	str += "차: " + sub + "<br>"; 
+	str += "곱: " + multi + "<br>"; 
+	str += "나누기: " + divide + "<br>"; 
+	
+	//출력 - 출력장소에 접근
+	document.getElementById('result').innerHTML = str;
+	
+}
+
+proc2 = () => {
+	//수 입력
+	su1 = parseInt( prompt("수1입력") );
+	su2 = parseInt( prompt("수2입력") );
+	
+	//연산자 입력
+	op = prompt("연산자 입력", "+, -, *, / 중 하나")
+	
+	//연산자 비교-if문 등의 조건문
+	// 자바스크립트는 그냥 ==로 비교한다.
+// 	if(op == "+"){
+// 		res = su1 + su2;
+// 	}else if(op == '-'){
+// 		res = su1 - su2;
+// 	}else if(op == '*'){
+// 		res = su1 * su2;
+// 	}else if(op == '/'){
+// 		res = su1 / su2;
+// 	}
+	
+	switch(op){
+	 case "+": 
+		 res = su1 + su2;
+		 break;
+	 case "-": 
+		 res = su1 - su2;
+		 break;
+	 case "*": 
+		 res = su1 * su2;
+		 break;
+	 case "/":
+		 res = su1 / su2;
+		 break;
+	}
+	
+	
+	//출력내용 작성 su1 op su2 = res 형태로 출력해줄것이다
+	str = su1 + op + su2 + " = " + res;
+	
+	//출력장소 검색 접근-출력
+	document.querySelector('#result2').innerHTML = str;
+	
+	
+}
+
+proc3 = () => {
+	//점수 입력
+	score = parseInt(parseInt(prompt("점수를 입력하세요(1~100)."))/10);
+	
+	//100 초과거나 1미만이면 오류 처리
+	//점수 비교 - switch로 학점 생성
+	if(score<0||score>100) {
+		str = "잘못 입력하였습니다."
+		document.querySelector('#result3').innerHTML = str;
+	}else{
+		switch(score){
+		case 10: 
+			res = "A";
+			break;
+		case 9:
+			res = "A";
+			break;
+		case 8:
+			res = "B";
+			break;
+		case 7:
+			res = "C";
+			break;
+		case 6:
+			res = "D";
+			break;
+		default:
+			res = "F"
+			break;
+		}
+	
+		//출력내용 작성
+		str = "학점은 " + res + "입니다."
+		//출력장소 접근 - 출력
+		
+		document.querySelector('#result3').innerHTML = str;
+	
+	}
+		
+	
+}
+
+</script>
+
+<style>
+.box{
+  border: 1px solid blue;
+  padding: 10px;
+  margin: 20px;
+}
+
+.box input[type=button]{
+   width: 100px;
+   height: 35px;
+   border-radius: 20px;
+   background: lightblue;
+   color: lightyellow;
+}
+
+.box div{
+  border: 1px dotted orange;
+  padding: 10px;
+  margin: 10px;
+}
+
+#hak{
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+</style>
+</head>
+<body>
+<div class="box">
+ <h4>두 수를 입력하여 사칙연산을 수행</h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result"></div>
+</div>
+
+<br>
+
+<div class="box">
+<h4>두 수와 연산자를 입력하여 사칙연산 수행</h4>
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+
+<div class="box">
+<h4 id="hak">♥ 학 점 공 개 ♥</h4>
+ <input type="button" value="확인" onclick="proc3()">
+ <br><br>
+ <div id="result3"></div>
+</div>
+</body>
+</html>

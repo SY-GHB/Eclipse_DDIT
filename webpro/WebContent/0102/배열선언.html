@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+ proc1 = () =>{
+	const fruits = ["사과", "바나나", "복숭아", "자두", "딸기", "수박"];
+	printArr(fruits, 'result1');
+	// fruits라는 배열의 주소를 못 바꾼다는거지 그 안의 원소들은 바꿀 수 있다.
+ }
+ 
+ proc2 = () => {
+	const fruits = new Array("파인애플", "망고", "복숭아", "자두", "딸기", "수박");
+	printArr(fruits, 'result2');
+ }
+ 
+ 
+ proc3 = () => {
+	const fruits = [];
+	fruits[0] ="배";
+	fruits[1] ="귤";
+	fruits[2] ="청포도";
+	fruits[3] ="자두";
+	fruits[4] ="딸기";
+	fruits[5] ="수박";
+	printArr(fruits, 'result3');
+ }
+ 
+ printArr = (arr, out) =>{
+	 str = "";
+// 	 document.getElementById(out).innerHTML = arr;
+// 	 for (i = 0; i < arr.length; i++) {
+// 		str += arr[i] + " ";
+// 	}
+	
+	for(i in arr){ //i가 인덱스의 역할
+// 		str += arr[i] + " ";
+		str += `배열요소 ${i}번째 => ${arr[i]} <br>`;
+	}
+	 
+	 document.getElementById(out).innerHTML = str;
+ }
+ 
+ 
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>리터럴로 배열 생성
+	const fruits = ["사과", "바나나", "복숭아", "자두", "딸기", "수박"];</h4>
+ 
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4>리터럴로 배열 생성
+	const fruits = new Array("파인애플", "망고", "복숭아", "자두", "딸기", "수박");</h4>
+ 
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+
+<div class="box">
+ <h4>리터럴로 배열 생성 const fruits = [];</h4>
+ 
+ <input type="button" value="확인" onclick="proc3()">
+	
+ <br><br>
+ <div id="result3"></div>
+</div>
+
+
+</body>
+</html>

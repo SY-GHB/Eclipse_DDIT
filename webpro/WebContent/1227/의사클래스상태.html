@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+a{
+  border: 1px solid skyblue;
+  margin: 10px;
+  padding: 10px;
+}
+
+.spc{
+  letter-spacing: 20px;
+}
+
+a:link{
+  color : green;
+  text-decoration: none; /*none-밑줄을 없애는 것, overline-윗줄, underline-아랫줄(기본), line-through-가운뎃줄*/
+  
+}
+a:visited{ /*한 번 갔다온 경우*/
+  color: red;
+}
+a:hover{ /*마우스를 올려놓은 경우*/
+  color: green;
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
+a:active{ /*누르는 순간: hover가 같이 일어난다.*/
+  background-color: lightgreen;
+}
+
+p:hover{
+  background-color: yellow;
+}
+p:active{
+  text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+<pre>
+의사클래스
+상태나 구조에 의해서 요소를 선택
+상태:  :link, :visited, : hover, :active
+</pre>
+
+<br>
+<h3>글자 사이에 공백(&amp;nbsp;)추가</h3>
+<a href="http://www.naver.com">네&nbsp;이&nbsp;버</a>
+<a href="http://www.daum.net">다&nbsp;음</a>
+<a href="http://www.nate.com">네&nbsp;이&nbsp;트</a>
+<a href="http://www.w3school.com">w3school</a>
+<br>
+
+<br>
+<hr>
+<br>
+<h3>글자간격을 스타일에서 지정</h3>
+<a class="spc" href="http://www.naver.com">네이버</a>
+<a class="spc" href="http://www.daum.net">다음</a>
+<a class="spc" href="http://www.nate.com">네이트</a>
+<a class="spc" href="http://www.w3school.com">w3school</a>
+<br>
+
+<br>
+<p>무궁화 꽃이 피었습니다</p>
+<p>사랑은 늘 도망가</p>
+<p>별빛같은 나의 사랑아</p>
+
+</body>
+</html>

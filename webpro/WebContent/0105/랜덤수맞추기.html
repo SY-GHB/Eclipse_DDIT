@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+//ran값은 입력할때마다 값이 바뀌면 안 되므로 미리 만들어질 수 있게 하자.
+ran = Math.floor(Math.random()*51);
+count = 1;
+ins = "";
+proc1=()=>{
+	
+	//변수 선언
+	
+	//입력한 값 가져오기
+	input = document.getElementById('text').value.trim(); //혹시모를 공백도 제거해주자
+	ins += input +" ";	
+	count ++;
+	
+	//ran값과 비교하기
+	if(ran == input){
+		hint = "정답입니다."
+		str = `입력수들: ${ins}<br>`;
+		str += `정답: ${ran}<br>`;
+		str += `입력횟수: ${count}<br>`;
+		str += hint;
+	}
+	else if(ran>input){
+		str = "더 큰 수를 입력하세요."
+	}
+	else if(ran<input){
+		str = "더 작은 수를 입력하세요."
+	} 
+	
+	
+	//출력하기
+	document.getElementById('result1').innerHTML = str;
+	
+}
+
+
+proc2=()=>{
+	
+	arr = ["가위", "바위", "보"];
+	rnum = Math.floor(Math.random() * arr.length);
+	com = arr[rnum];
+	
+	user = prompt("가위, 바위, 보 중 하나를 입력하세요.");
+	
+	if(com==user){
+		res = "비겼습니다.";
+	}else if(com=="가위"&&user=="바위"||com=="바위"&&user=="보"||com=="보"&&user=="가위"){
+		res = "당신이 이겼습니다.";
+	}else {
+		res = "컴퓨터가 이겼습니다.";
+	}
+	
+	str = `com: ${com}<br> user: ${user}<br> result: ${res}`
+	
+	document.getElementById('result2').innerHTML = str;
+	
+}
+
+arr2 = [];
+
+proc3=()=>{
+	
+	while(true){
+		rand = Math.floor(Math.random()*46);
+		
+		if(arr2.indexOf(rand)==-1){
+			arr2.push(rand);
+		}
+		if(arr2.length>=6) break;
+	}
+	
+	document.getElementById('result3').innerHTML = arr2;
+	
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+ <h4>랜덤게임</h4>
+ 수 입력<input type="text" id="text" placeholder="1~50사이의 정수를 입력하세요.">
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4>가위바위보</h4>
+ <input type="button" value="확인" onclick="proc2()">
+ <br><br>
+ <div id="result2"></div>
+</div>
+
+<div class="box">
+ <h4>로또번호 만들기(1~45 중 6개의 번호 추첨)</h4>
+ <input type="button" value="확인" onclick="proc3()">
+ <br><br>
+ <div id="result3"></div>
+</div>
+</body>
+</html>

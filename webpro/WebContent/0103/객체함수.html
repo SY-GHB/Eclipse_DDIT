@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script>
+class User{
+	
+	constructor(name){
+		this.name = name;
+	} 
+	sayHi(){
+		alert(this.name);
+	}
+}
+	//typeof 연산자로 객체의 타입을 알아낼 수 있다. - User은 function으로 뜬다.
+	// fucntion으로 정의하건 class로 정의하건 function으로 뜨지만. class는 constructor를 만들어야 한다.
+// alert(typeof(User));
+
+user = new User("user");
+
+console.log(user);
+user.sayHi();
+
+proc1=()=>{
+	user2 = new User("황지훈");
+	user2.sayHi();
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+</body>
+</html>

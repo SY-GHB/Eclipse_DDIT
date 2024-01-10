@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div{
+  width: 30%;
+  height: 300px;
+  border: 2px solid blue;
+  margin: 10px auto;
+  padding: 20px;
+/*   float: left; */
+  background-image: url(../images/KakaoTalk_20231120_151951680.png);
+}
+
+#d1{
+  background-size: cover;
+}
+#d2{
+  background-size: contain; /*남은공간에 이미지가 반복적으로 들어온다.*/
+}
+#d3{
+  width: 90%;
+  background-image: linear-gradient( skyblue, white);
+  /*linear: 세로그라데이션이 기본이지만 to right를 넣으면 왼쪽에서 오른쪽으로 간다.(direction속성)
+   여러 색을 넣을 수도 있으며, deg로 기울기를 조절할 수도 있다.*/
+}
+#d4{
+  width: 90%;
+  background-image: radial-gradient(lightyellow, white, skyblue);
+}
+
+</style>
+</head>
+<body>
+<div id="d1">
+</div>
+
+<div id="d2">
+</div>
+
+<div id="d3">
+</div>
+
+<div id="d4">
+</div>
+
+</body>
+</html>
