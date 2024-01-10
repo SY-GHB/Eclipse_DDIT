@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/json-20231013.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.16.1.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.10.1.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-app-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-tools-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/preflight-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/preflight-app-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/xmpbox-2.0.30.jar"/>
+	<classpathentry kind="lib" path="lib/fontbox-2.0.30.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
