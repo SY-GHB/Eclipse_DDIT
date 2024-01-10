@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+proc1=()=>{
+	//모든 p태그를 선택
+	$('p').css('color', 'red');
+}
+
+
+$(document).ready(function(){
+	$('.box .pele').on('click', function(){
+		
+		//★★★★★★★★★★★★★★★★★★★★★
+		//this를 컨텍스트로 썼다. this(클릭한 p의 부모)의 자식인 p라는 의미다.
+		$('p', this).css('background', 'lightyellow');
+	})
+	
+	//style에서는 +=가 안먹지만 JQuery에는 먹는다.
+	$('p', document.forms[0]).on('click', function(){
+		$(this).css('font-size','+=5px');
+	})
+	
+})
+
+</script>
+<style>
+form{
+ border: 2px solid blue;
+ margin: 15px;
+ padding: 10px;
+}
+
+p{
+ border: 1px dotted pink;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1" class="pele">
+ 	<p>예시문장1</p>
+ </div>
+ <div id="result2" class="pele">
+ 	<p>예시문장2</p>
+ </div>
+ 
+ <form class="pele">
+ 	<p>예시문장3</p>
+ </form>
+ 
+ <form class="pele">
+ 	<p>예시문장4</p>
+ </form>
+ 
+</div>
+</body>
+</html>

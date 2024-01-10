@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+
+proc1 =() =>{
+// 	document.getElementById('result1').style.background = "yellow";
+	//여기서 vres1를 dom객체라고 한다
+	vres1 = document.getElementById('result1');
+	vres1.style.background = "yellow";
+
+// 	$('#result1').css('background', 'yellow');
+}
+
+
+//id=jqbt요소를 검색 $ = jquery임을 의미;
+
+// window.onload =function(){
+// 	//onclick이벤트를 주자
+// 	$('#jqbtn').on('click', /*()=>{}*/ function(){
+		
+// 		// 제이쿼리 안에서도 document.getElementById('result1').style.background = "yellow";, 즉 dom변수를 쓸 수 있다.
+// 		//vres2는 jquery변수 - jquery에는 css변수를 쓴다.
+// 		vres2 = $('#result2');
+// 		vres2.css('background', 'red');
+// 	}) 
+// }
+
+//이 구문은 window.onload와 같다.
+$(document).ready ( () =>{
+	$('#jqbtn').on('click', function(){
+		vres2 = $('#result2');
+		vres2.css('background', 'red');
+	})
+})
+
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>button에 onclick="proc1()"</h4>
+ <input type="button" value="확인" onclick="proc1()">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4>JQuery 방식 - script에서 button을 검색접근(id이용)해서 event를 부여<br></h4>
+ <input type="button" value="확인" id="jqbtn">
+ <br><br>
+ <div id="result2"></div>
+</div>
+</body>
+</html>

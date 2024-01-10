@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src = "../js/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	//btn1검색
+	$('#btn1').on('click',function(){
+// 		hlist = document.getElementsByTagName('h1');
+		hlist = document.querySelectorAll('#result1 h1');
+		clist = ["red", "orange", "yellow", "lightgreen", "skyblue"];
+		
+		for (i = 0; i < hlist.length; i++) {
+			hlist[i].style.color = clist[i];
+		}
+		
+		//이건 dom변수를 jquery방식으로 변환햇으니 먹는다.
+		$(hlist[0]).css('background', 'lightyellow');
+	})
+	
+	//btn2검색
+	$('#btn2').on('click',()=>{
+		
+		jlist = $('#result2 h1');
+		jlist.css('color','red');
+		
+		jlist.eq(1).css('color', 'green');
+		
+		//이건 먹는다.
+		$(jlist[0]).css('background', 'lightyellow');
+		
+		//이건 안먹는다. jquery변수에 [indx]를 붙이면 다시 dom변수가 되기 때문.
+		//.css()는 jquery방식이고 .style은 dom변수, script방식이라서 호환안됨 
+		jlist[0].css('color', 'green');
+		
+		
+	})
+	
+	//이하 두 블럭은 위 블럭과 같은 내용
+// 	$('#btn2').click(()=>{
+// 		jlist = $('#result2 h1');
+// 		jlist.css('color','red');
+// 	})
+	
+// 	$('#btn2').bind('click',()=>{
+// 		jlist = $('#result2 h1');
+// 		jlist.css('color','red');
+// 	})
+	
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1">
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+ </div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id ="btn2">
+ <br><br>
+ <div id="result2">
+ <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+   <h1>무궁화 꽃이 피었습니다</h1>
+  </div>
+</div>
+</body>
+</html>

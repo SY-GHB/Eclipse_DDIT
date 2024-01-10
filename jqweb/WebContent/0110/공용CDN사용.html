@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+ $(document).ready(function(){
+	 //id="btn1"인 요소 검색
+	 //click이벤트 설정 - on()
+	 $('#btn1').on('click', function(){
+		 
+		 vres1 = $('#result1');
+		 vres1.css('background', 'blue');
+		 
+		 //메소드를 이어쓰는것 - 메소드 체이닝 method chaining
+		 $('#result1').css('background', 'lightyellow')
+		 			  .css('border','10px solid lightblue');
+	 })
+ })
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1"></div>
+</div>
+</body>
+</html>
