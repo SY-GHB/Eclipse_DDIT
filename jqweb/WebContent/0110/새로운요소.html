@@ -15,6 +15,9 @@ proc1 = ()=>{
 	parr = document.createElement('p');
 	//생성된 p태그에 클래스 지정
 	parr.setAttribute("class", "pp");
+	parr.onclick=function(){
+		alert("hello JavaScript");
+	};
 	
 	//부모p태그에 자식vtext를 추가
 	parr.appendChild(vtext);
@@ -25,13 +28,49 @@ proc1 = ()=>{
 }
 	
 	//JQuery는 새로운 요소를 만들기가 훨씬 쉽다.
-proc2 =() =>{
+proc2 = () =>{
 	//새로운 태그 만들기
-	vhtml = $('<p class="pp">Hello</p>');
+	vhtml = $('<p class="pp" onclick="hello()">Hello</p>');
 	
 	//result2에 추가. appendChild아니고 append임
 	$('#result2').append(vhtml);
 	
+}
+
+hello=()=>{
+	alert("hello JQuery!");
+}
+
+// <p>어쩌고</p> 에서 어쩌고가 text다
+//속성에서 따로 줄 때는 onclick이 아니라 click이다.
+proc3=()=>{
+	
+// 	vp = $('<p></p>', {});
+	
+	vp= $('<p/>', {
+		"class" : "pp",
+		"id" : "p1",
+		"text" : "hello",
+		"click" : function(){
+			
+			cr = Math.floor(Math.random()*256);
+			cg = Math.floor(Math.random()*256);
+			cb = Math.floor(Math.random()*256);
+			
+// 			alert('hello properties~');
+			//this: DOM변수 $(this): JQuery변수
+			//카멜표기법은 DOM변수에만 쓸 수 있고 css는 JQuery로만 쓸 수 있다.
+			//this쓸 땐 fucntion(){}으로 써야 한다. 람다함수는 안 됨. 
+// 			this.style.color=`rgb(${cr}, ${cg}, ${cb})`;
+			$(this).css('font-size', '+=5px');
+			$(this).css('color', `rgb(${cr}, ${cg}, ${cb})`);
+		}
+		
+	})
+	
+	//result3에 추가 - 부모.append(자식)
+	$('#result3').append(vp);
+	//result3에 추가 - 자식.appendTo(부모)
 }
 
 </script>
@@ -50,6 +89,13 @@ proc2 =() =>{
  <input type="button" value="확인" onclick="proc2()">
  <br><br>
  <div id="result2"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" onclick="proc3()">
+ <br><br>
+ <div id="result3"></div>
 </div>
 </body>
 </html>
