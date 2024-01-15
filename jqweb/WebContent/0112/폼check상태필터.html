@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+ $(()=>{
+	 //이 셋은 같은 의미의 표기다.
+	 /* $('input[type=checkbox]:checked')
+	 $('input:checkbox:checkd')
+	 $(':checkbox:checkd') */
+	 $('#btn1').on('click', function(){
+		 //맨 처음 체크만 찍힌다. 반복문을 써야 함.
+		 
+		 vinput="";
+	 	$('input:checkbox:checked').each(function(i,v){
+	 		vinput += $(this).val()+", ";
+	 	})
+	 	
+	 	vinput = vinput.slice(0, vinput.length-2);
+	 	console.log(vinput);
+	 	
+	 	
+	 	$('.res').html(vinput);
+	 })
+ })
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1">
+	<form>
+	취 미 :
+	 <input type="checkbox" name="hobby" value="여행" checked >여행
+	<input type="checkbox" name="hobby" value="장기">장기
+	<input type="checkbox" name="hobby" value="바둑">바둑
+	<input type="checkbox" name="hobby" value="독서" checked>독서
+	<input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+	<input type="button" value="전송">
+	</form>
+ </div>
+ <div class="res"></div>
+</div>
+</body>
+</html>

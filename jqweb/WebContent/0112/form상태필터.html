@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+<script>
+
+$(()=>{
+	
+	//change는 내장된 단어이다.
+	//파라미터가 하나일 경우 매개변수자리의 괄호는 생략가능하다
+	$('input[name=id]').on('change', () =>{
+		//name="disSelect"요소의 상태값을 사용가능으로 변경한다.
+		//enabled로 변경하는게 아니라 disabled=false로 변경한다.
+		//상태값을 바꾸는 메소드 - prop('상태이름', true/false)
+		//[name="disSelect"]에서 큰따옴표 생략가능
+		$('select[name=disSelect]').prop('disabled', false);
+	})
+	
+	
+	//function에는 event라는 매개변수가 내장되어있다.
+	//매개변수에 입력하지 않아도 event를 꺼내쓸수있다. 변수로 받아오면 변수를 꺼내서써줘야한다.
+	$('#btn1').on('click', function(){
+		//tagName은 대문자로뜬다 - if문을 사용할 때 등엔 대문자로 비교해야 한다.
+// 		alert(event.target.tagName);
+		
+		//사용가능한 요소 선택하기
+		$('#result1 form *:enabled').css('border', '3px solid green').css('background','pink');
+		
+		//사용불가능한 요소 선택하기
+		$('#result1 form *:disabled').css('border', '3px solid red');
+		
+	})
+})
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1">
+	<form action="폼상태필터.jsp" method="post"> 
+	<input type="text" name="id" value="a001"><br>
+	<input type="password" name="pass"><br>
+	<input type="text" name="name" value="홍길동" disabled><br>
+	
+	<select name="disSelect" disabled>
+	      <option>Option1</option>
+	      <option>Option2</option>
+	      <option>Option3</option>
+	      <option>Option4</option>
+	</select>
+	<br>
+	<textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+	<input type="button" value="확인"  onclick="alert('hello!!')" disabled> <br>
+	<input type="submit">
+	</form>
+ </div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn2">
+ <br><br>
+ <div id="result2">
+	<form action="폼상태필터.jsp" method="post"> 
+	<input type="hidden" name="id" value="a001"><br>
+	<input type="password" name="pass"><br>
+	<input type="text" name="name" value="홍길동" disabled><br>
+	
+	<select name="disSelect" disabled>
+	      <option>Option1</option>
+	      <option>Option2</option>
+	      <option>Option3</option>
+	      <option>Option4</option>
+	</select>
+	<br>
+	<textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+	<input type="button" value="확인"  onclick="alert('hello!!')"> <br>
+	<input type="submit">
+	</form>
+ </div>
+</div>
+</body>
+</html>
