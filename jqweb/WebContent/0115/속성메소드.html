@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script>
+$(()=>{
+	$('#btn1').on('click', ()=>{
+		$('#result1 p').attr('class','p1');
+		//attr는 반복문에 안써도 갯수만큼 수행된다.
+		$('#result1 p').attr('title','무궁화');
+	})
+	
+	$('#btn2').on('click', ()=>{
+		$('#result2 p').attr('class','p2');
+		
+		$('#result2 p').attr('title',function(){
+			vp = $(this).text();
+			//vp문자열을 공백기준으로 분리해여 배열로 반환해야함
+			
+			vparr = vp.split(" ");
+			
+			return vparr[0];
+		});
+	})
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1">
+ 
+ 	<p>무궁화 꽃이 피었습니다</p>
+	<p>능수화 꽃이 피었습니다</p>
+	<p>진달래 꽃이 피었습니다</p>
+	<p>개나리 꽃이 피었습니다</p>
+	<p>수선화 꽃이 피었습니다</p>
+	<p>해당화 꽃이 피었습니다</p>
+ 
+ </div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" id="btn2">
+ <br><br>
+ <div id="result2">
+ 
+ 	<p>무궁화 꽃이 피었습니다</p>
+	<p>능수화 꽃이 피었습니다</p>
+	<p>진달래 꽃이 피었습니다</p>
+	<p>개나리 꽃이 피었습니다</p>
+	<p>수선화 꽃이 피었습니다</p>
+	<p>모란꽃이 피었습니다</p>
+ 
+ </div>
+</div>
+</body>
+</html>

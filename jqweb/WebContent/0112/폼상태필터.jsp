@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	//한글이 안 깨지게 인코딩방법 지당
+	//한글이 안 깨지게 인코딩방법 지정
   request.setCharacterEncoding("utf-8");
 	//hideen인 id는 가져올 수 있지만
   String userId = request.getParameter("id");

@@ -16,6 +16,7 @@ pre{
 }
 
 .box div{
+/* 	border: 1px solid pink; */
 	border: 1px solid #ffd78a;
 	border-radius: 30px;
 	padding: 20px;

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script>
+$(()=>{
+	$('#btnview').on('click', function(){
+		//입력한 값을 가져온다.
+		user = $('#user').val();
+		
+		gend = $('.gend:checked').val();
+		
+		area = $('#intro').val();
+		//All이어도 하나만 바뀌기때문에 /g를 써줘야함
+		area = area.replaceAll(/\n/g, "<br>");
+		
+		work = $('#work option:selected').val();
+		
+		str = `이름: ${user} <br> 성별: ${gend} <br> 소개: ${area} <br> 직업: ${work} <br>`;
+		
+		//버튼에 type을 넣어주지 않으면 submit인데
+		//from태그에서 갈곳이 없으면 주소창에 가려고햇던 데이터만 남고 어디로도 갈수없다...
+		//그래서 type="button"을 넣어줬다.
+		$('#res1').html(str);
+	})
+	
+	$('#btnchange').on('click', ()=>{
+		//btnchange버튼은 submit을 수행하는 버튼.
+		//submit수행이 안되도록 막으면 될듯
+		//자동으로 받아오는 event라는 객체를 활용하면 된다.
+		//preventDefault: 원래 가졌던 기능을 제거한다는 의미다.
+		event.preventDefault();
+		
+		//이름 입력
+		userName = prompt('이름을 입력하세요.');
+		
+		$('#user').val(userName);
+	})
+	
+	$('.box a').on('click', function(){
+		age = 20;
+		if(age<15){
+			event.preventDefault();
+			alert('대상이 아닙니다.');
+		}
+	})
+	
+})
+
+</script>
+</head>
+<style>
+textarea{
+	vertical-align: top;
+}
+</style>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <a href="http://www.naver.com">네이버</a>
+ <br><br>
+ <div id="result1">
+ 
+	 <form>
+	 
+	  <label for="user">이름</label>
+	<input type="text" id="user" value="korea"><br>
+	
+	<label >성별</label> 
+	  <input type="radio" class="gend" name="gend" value="남자" checked >남자
+	  <input type="radio" class="gend" name="gend" value="여자"  >여자<br>
+	  
+	  <label for="intro">소개</label> <br>
+	<textarea id="intro" cols="40" rows="4"></textarea> <br>
+	
+	 <label for="work">직업</label>
+	 <select id="work">
+	   <option value="programmer">프로그래머</option>
+	   <option value="progammer">프로게이머</option>
+	   <option value="whitehand">백수</option>
+	 </select><br>
+	 
+	 
+	 <!-- button에 타입이 없으면 submit -->
+	<button id="btnview" type="button">조사하기 </button>
+	<button  id="btnchange">이름변경 </button>
+	
+	</form>
+ 
+ </div>
+ 
+ <div id = "res1"></div>
+ 
+</div>
+</body>
+</html>
