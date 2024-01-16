@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script>
+$(()=>{
+//이렇게도 쓸 수 있다-동적으로 추가된 요소를 검색가능
+	$(document).on('click', '#btn1', function(){
+// 	$('#btn1').on('click', function(){
+		//각 요소의 현재상태를 바꾼다. - prop이용
+		
+		vchk = $('#checkTest').prop('checked');
+		vsel = $('#selTest option').eq(2).prop('selected');
+		vread = $('#txtTest').prop('readonly');
+		vdis = $('#runBtn').prop('disabled');
+		
+		
+		
+		
+		//출력내용
+		str = `checked==> ${vchk} <br>selected==> ${vsel} <br>readonly==> ${vread} <br>disable==> ${vdis}`;
+		
+		//출력
+		$('#res1').html(str);
+		
+		//현재 상태 변경하기
+		
+		$('#checkTest').prop('checked', !vchk);
+		$('#selTest option').eq(2).prop('selected', !vsel);
+		$('#txtTest').prop('readonly', !vread);
+		$('#runBtn').prop('disabled', !vdis);
+	})
+	
+	//change나 click모두 사용할 수 있다.
+	$('#all').on('change', function(){
+		//현재
+		vbool = $(this).prop('checked');
+		
+		$('.opt').prop('checked', vbool);
+	})
+	
+})
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4> 버튼 클릭을 할 때마다 지금 현재 상태를 반대상태로 바꾼다.</h4>
+ <input type="button" value="확인" id="btn1">
+ <br><br>
+ <div id="result1">
+	 <form>
+	체크박스(라디오버튼) :    <input type="checkbox" id="checkTest"  checked><br><br>
+	
+	리스트박스(select객체) : 
+	 <select id="selTest">
+	     <option value="1">하나</option> 
+	     <option value="2">둘</option>
+	     <option value="3" selected >셋</option> 
+	     <option value="4">넷</option>
+	 </select><br><br>
+	
+	 text객체	(readonly) : <input type="text" value="가나다" id="txtTest"><br><br>
+	
+	 button객체(disabled) : 
+	       <input type="button" value="실행" id="runBtn" >
+	</form>
+ </div>
+</div>
+
+<div class="box">
+ <h4> 전체선택의 상태 값으로 1~5의 상태값을 설정.</h4>
+ <br><br>
+ <div id="result2">
+ 	<form>
+	<input type="checkbox" value="전체선택" id="all" checked> 체크박스(전체선택/삭제) : <br> 
+	1 <input type="checkbox"  class="opt"  checked>
+	2 <input type="checkbox"  class="opt"  checked>
+	3 <input type="checkbox"  class="opt"  checked>
+	4 <input type="checkbox"  class="opt"  checked>
+	5 <input type="checkbox"  class="opt"  checked>
+	</form>
+ </div>
+</div>
+</body>
+</html>

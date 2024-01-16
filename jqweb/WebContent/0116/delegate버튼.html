@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script>
+$(()=>{
+	$(document).on('click', '.btn1', ()=>{
+		newBtn = $('<input type="button" value="확인" class="btn1">');
+		$('#result1').append(newBtn);
+	})
+	
+	$('.btn2').on('click', ()=>{
+		$(document).off('click', '.btn1');
+	})
+	
+	$('#fadd').on('click', ()=>{
+		//새로운 요소를 만든다.
+		newEle = $('<p><input type="file" class="bfile"><input type="button" value="삭제" class="fdel"></p>');
+		$('#result2').append(newEle);
+		
+	})
+	
+	//$('#fdel').on() 이런식으로주면 작동안함.
+	$(document).on('click', '.fdel', function(){
+		$(this).parent().remove();
+// 		$(this).parent().empty();
+	})
+	
+})
+</script>
+</head>
+<style>
+p {
+	border: 3px solid blue;
+	padding: 10px;
+}
+</style>
+<body>
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="확인" class="btn1">
+ <input type="button" value="해제" class="btn2">
+ <br><br>
+ <div id="result1"></div>
+</div>
+
+<div class="box">
+ <h4></h4>
+ <br><br>
+ <div id="result2">
+ <input type="file" class="bfile">
+ <input type="button" value="추가" id="fadd"><br>
+ </div>
+</div>
+</body>
+</html>

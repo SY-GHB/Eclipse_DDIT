@@ -51,10 +51,17 @@ public class TcpFileServer {
 			//Socket으로 수신(읽은)한 데이터를 파일로 출력하기
 			byte[] temp = new byte[1024];
 			int length = 0;
+			//length는 temp배열의 크기.
+			//read(byte[])에서 매개변수로 사용된 배열의 크기만큼 한번에 읽어온다.
+			//더이상 읽어올 게 없을 때까지 읽어온다.
 			while((length=bin.read(temp))!=-1) {
+				//int read(byte[] b): 매개변수에 들어있는 byte 배열(b)의 크기만큼 한번에 읽어들인다
+				// write(byte[] b, int off, int len): b배열의 off번부터 len개를 출력하라.
+				//temp에 length만큼의 양을 입력하고 출력하기를 반복하는 반복문이다.
 				bout.write(temp,0,length);
 			}
 			
+			//버퍼를 비워준다.
 			bout.flush();
 			
 			System.out.println("파일 저장 완료");
