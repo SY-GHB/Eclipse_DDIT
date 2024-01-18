@@ -1,4 +1,4 @@
-package kr.or.ddit.jdbcBoardTest.vo;
+package kr.or.ddit.mvc.vo;
 
 public class BoardVO {
 	private int board_no;

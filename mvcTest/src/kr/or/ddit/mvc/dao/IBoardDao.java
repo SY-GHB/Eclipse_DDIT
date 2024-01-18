@@ -1,11 +1,12 @@
-package kr.or.ddit.jdbcBoardTest.service;
+package kr.or.ddit.mvc.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.jdbcBoardTest.vo.BoardVO;
+import kr.or.ddit.mvc.vo.BoardVO;
 
-public interface IBoardService {
+public interface IBoardDao {
+
 	/**
 	 * BoardVO객체에 담긴 내용을 insert하는 메소드
 	 * @param bv DB에 저장할 게시판 내용이 담긴 BoardVO객체
@@ -57,4 +58,5 @@ public interface IBoardService {
 	 * @return 작업성공1 작업실패 0
 	 */
 	public int countBoard(int board_no);
+	
 }

@@ -1,11 +1,13 @@
-package kr.or.ddit.jdbcBoardTest.service;
+package kr.or.ddit.mvc.service;
 
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.jdbcBoardTest.dao.BoardDaoImple;
-import kr.or.ddit.jdbcBoardTest.dao.IBoardDao;
-import kr.or.ddit.jdbcBoardTest.vo.BoardVO;
+import kr.or.ddit.mvc.dao.BoardDaoImple;
+import kr.or.ddit.mvc.dao.IBoardDao;
+import kr.or.ddit.mvc.dao.IMemberDao;
+import kr.or.ddit.mvc.dao.MemberDaoImple;
+import kr.or.ddit.mvc.vo.BoardVO;
 
 public class BoardServiceImple implements IBoardService {
 	private IBoardDao dao;
@@ -37,11 +39,6 @@ public class BoardServiceImple implements IBoardService {
 
 	@Override
 	public BoardVO detailBoard(int board_no) {
-//		//조회수를 먼저 증가한 다음 게시글 정보를 가져온다.
-//		if(countBoard(board_no) ==0) {
-//			//조회수 올리기가 실패하면
-//			return null;
-//		};
 		
 		return dao.detailBoard(board_no);
 	}

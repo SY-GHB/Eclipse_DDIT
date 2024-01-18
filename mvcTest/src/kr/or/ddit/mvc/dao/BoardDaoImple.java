@@ -1,4 +1,4 @@
-package kr.or.ddit.jdbcBoardTest.dao;
+package kr.or.ddit.mvc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.jdbcBoardTest.vo.BoardVO;
+import kr.or.ddit.mvc.vo.BoardVO;
 import kr.or.ddit.util.DBUtill3;
 
 public class BoardDaoImple implements IBoardDao {
@@ -61,10 +61,10 @@ public class BoardDaoImple implements IBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from jdbc_board";
 		
 		try {
 			conn = DBUtill3.getConnection();
+			String sql = "select * from jdbc_board order by BOARD_NO ASC";
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -132,6 +132,7 @@ public class BoardDaoImple implements IBoardDao {
 	}
 
 	@Override
+	//어차피 vo안에도 board_no가 잇기때문에 매개변수를 두개줄것없이 그냥 VO로 받아와도된다.
 	public int updateBoard(int board_no, Map<String, String> map) {
 		int cnt = 0;
 		Connection conn = null;
@@ -231,6 +232,7 @@ public class BoardDaoImple implements IBoardDao {
 		int cnt = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		// set BOARD_cnt = BOARD_cnt+1로 만들수도 있다.
 		String sql = "update JDBC_BOARD\r\n" + 
 				"set BOARD_cnt = (select BOARD_cnt from jdbc_board where board_no = ?)+1\r\n" + 
 				"where board_no=?";
