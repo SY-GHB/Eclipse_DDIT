@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+
+<script>
+	
+	$(()=>{
+		$('#text').on('click', ()=>{
+			
+			//단축메뉴 - 이건순서바뀌면안됨. url, data, success, dataType 순. error없다!!!
+			//getJSON의 경우 dataType도 없다.
+// 			$get("../aaa.jsp", 'id=aaa', function(res){}, 'json')
+// 			$getJSON("../aaa.jsp", 'id=aaa', function(res){})
+			
+			//단축메뉴로 바꾸기 전
+			$.ajax({
+				//순서바꿔써도됨, error없어도됨.
+				url : "../0117/text.jsp",
+				type : "get",
+				data : "id=aaa",
+				success : function(res){
+					//응답데이터: 개나리/진달래/무궁화/수선화/라일락.,.,.
+					vstr = res.split("/");
+					code = "<ul>";
+					
+					vstr.forEach((str, index)=>{
+						code += "<li>"+str+"</li>";
+					})
+					
+					code += "</ul>";
+					
+					$('#result1').html(code);
+				},
+				error : function(xhr){
+					alert('상태: ' + xhr.status);
+					//200, 404, 500, 403. 200은 왜??
+					//url잘못쓰면 404오류남
+					//JSON파싱할때 오류가났기때문임. 에러에서 나는 200번대는 "나 ,의 유무 등 형식문제
+				},
+				dataType : 'text'
+			})
+		})
+		
+		
+		$('#arr').on('click', ()=>{
+			$.ajax({
+				url : "../0117/arr.jsp",
+				type : "get",
+				success : function(res){
+					code="<ol>";
+					
+					$.each(res, (i, vres)=>{
+						code += "<li>"+vres+"</li>";
+					})
+					
+					code += "</ol>";
+					$('#result2').html(code);
+				},
+				error : (xhr)=>{
+					alert('상태: ' + xhr.status);
+				},
+				dataType : "json"
+			})
+		})
+		
+		
+		$('#jobj').on('click', ()=>{
+			$.ajax({
+				url : "../0117/obj.jsp",
+				type : "get",
+				success : function(res){
+					alert('성공')
+					
+					code = `이름: ${res.name} <br> 나이: ${res.age} <br> 주소: ${res.addr} <br>`;
+					code += `전화번호: ${res.tel} <br>`;
+					
+					$('#result3').html(code);
+				},
+				error : (xhr)=>{
+					alert('상태: ' + xhr.status); //jsp파일에 JSON형식 오류가 있을 경우 200이 뜬다.
+				},
+				dataType : "json"
+			})
+		})
+		
+		
+		$('#obarr').on('click', ()=>{
+			//url, data, success. data가 없어서 생략했다.
+			
+			$.getJSON(
+					"../0117/obarr.jsp",
+					function(res){
+				
+						code = "";
+						$.each(res, function(i, v){
+							code +=`${i}번째 정보<br>`
+							code += `이름: ${res[i].name} <br>`;
+							code += `나이: ${v.age} <br>`;
+							code += `주소: ${v.addr} <br>`;
+							code += `전화번호: ${v.tel} <br><br>`;
+						})
+					
+				$('#result4').html(code);
+			});
+		})
+	})
+	
+</script>
+</head>
+<body>
+
+	<div class="box">
+		<h4></h4>
+		<input type="button" value="text" id="text"> <input
+			type="button" value="arr" id="arr"> <input
+			type="button" value="jsonobj" id="jobj"> <input
+			type="button" value="jobarr" id="obarr"> <br>
+		<br>
+
+		<div id="content">
+			<div class="res" id="result1"></div>
+			<div class="res" id="result2"></div>
+			<div class="res" id="result3"></div>
+			<div class="res" id="result4"></div>
+		</div>
+	</div>
+</body>
+</html>

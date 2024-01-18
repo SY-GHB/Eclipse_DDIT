@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+<script>
+
+// //자바스크립트로만 하는 방법
+// window.onload=function(){
+// 	vsend = document.getElemetById('send');
+// 	//호출이아니라 참고값이라 메소드 이름만
+// 	vsend.addEventListener('click', sendProc);
+// }
+
+// sendProc = function(){
+// 	this .,.,.,
+// }
+
+//전역변수
+ let xhr = new XMLHttpRequest();
+
+$(()=>{
+	
+	//비동기 post
+	$('#send').on('click', function(){
+		
+		//입력한 값을 가져온다.
+		//js방식-부모인 form에도 name이 있어야 한다.
+// 		vid = document.ff.id.value;
+// 		vname = document.ff.name.value;
+		
+		
+		vid = $('#id2').val().trim();
+		vname = $('#name2').val().trim();
+		
+		//String데이터들에 공백이 있으면 안 된다.
+		data = "id=" + vid + "&name=" + vname;
+		
+		//요청
+		//open-get이냐 post냐를 정함
+		xhr.open("POST", "비동기1.jsp", true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(data);
+		
+		//응답, 이벤트 이름은 전부 소문자로쓴다. 오타나면못찾음.
+		xhr.onreadystatechange = function(){
+			
+			alert(this.readyState);
+			
+			if(this.readyState == 4 && this.status == 200){
+				//비동기1이 실행되고 난 결과를 res에 담음
+				res = this.responseText;
+				
+				$('#res2').html(res);
+			}
+		}
+		
+		//요청과 응답을 바꿔 써도 if문의 조건이 있으므로 작동은 한다!!
+	})
+	
+	//비동기 get
+	$('#gsend').on('click', function(){
+		
+		vid = $('#id3').val().trim();
+		vname = $('#name3').val().trim();
+		
+		
+		//요청 - ?id는 id2나 id3이 아닌게 jsp에서 name값을 id로 받아왓기때문...
+		xhr.open("GET","비동기1.jsp?id="+vid+"&name="+vname);
+		xhr.send();
+		
+		//응답
+		xhr.onreadystatechange = function(){
+			if(this.readyState==4 && this.status==200){
+				res = this.responseText;
+				
+				$('#res3').html(res);
+			}
+		}
+	})
+})
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+ <h4>동기방식-post</h4>
+ <br><br>
+ <div id="result1">
+ 
+ <form action="비동기1.jsp" method="post">
+  아이디<input type="text" id="id" name="id"><br>
+  이름<input type="text" id="name" name="name"><br>
+  <input type="submit" value="전송"><br>
+ </form>
+ 
+ </div>
+</div>
+
+<div class="box">
+ <h4>비동기방식-post</h4>
+ <br><br>
+ <div id="result2">
+ 
+ <form name="ff">
+  아이디<input type="text" id="id2" name="id"><br>
+  이름<input type="text" id="name2" name="name"><br>
+  <input type="button" id="send" value="전송"><br>
+ </form>
+ <div id="res2"></div>
+ 
+ </div>
+</div>
+
+<div class="box">
+ <h4>비동기방식-get</h4>
+ <br><br>
+ <div id="result3">
+ 
+ <form name="ff">
+  아이디<input type="text" id="id3" name="id"><br>
+  이름<input type="text" id="name3" name="name"><br>
+  <input type="button" id="gsend" value="전송"><br>
+ </form>
+ <div id="res3"></div>
+ 
+ </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.7.1.min.js"></script>
+
+
+<script>
+let xhr = new XMLHttpRequest();
+
+textproc = () => {
+	//요청 - 입력받은 데이터가 없으니까 get이지만 ?가 이어지지 않음
+	xhr.open("GET", "text.jsp", true);
+	xhr.send();
+	
+	//응답
+	xhr.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			res = this.responseText;
+			// res = 홍길동/개나리/진달래/무궁화/수선화/라일락
+			
+			res = res.split("/");
+			
+			code = "<ul>";
+			
+			//javaScript
+// 			for (i = 0; i < res.length; i++) {
+// 				code += "<li>"+res[i]+"</li>";
+// 			}
+
+			//jquery
+ 		/*	$.each(res, function(i){
+				code += "<li>"+res[i]+"</li>";
+			}) */
+			
+			//javaScript index는 주든안주든상관없음. es6에서 나온것임
+			res.forEach((str, index)=>{
+				//res의 0번째가 str
+				code += "<li>"+str+"</li>";
+			})
+			
+			code += "</ul>";
+			
+			$('#result1').html(code);
+		}
+	}
+}
+
+
+arrproc = ()=>{
+	xhr.open("GET", "arr.jsp", true);
+	xhr.send();
+	
+	xhr.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			res = this.responseText;
+			//res = ["장미", "무궁화", "수선화", "라일락", "모란", "국화", "백합"]
+			//형식은  JSON이지만 지금은 text상태다.
+			//JSON배열 형태로 만들어줘야함 script객체로 변환해줘야 한다 - JSON.parser()
+			res = JSON.parse(res);
+			
+			//매개변수로 넣어준게  JSON형식이 아니면 변환안된다.
+			//Integer.parseInt("korea")가 안먹는것처럼...
+			
+			
+			code = "<ol>";
+			
+			res.forEach(str=>{
+				code += "<li>"+str+"</li>";
+			})
+			
+			code += "</ol>";
+			
+			$('#result2').html(code);
+		}
+	}
+	
+}
+
+objproc=()=>{
+	//요청
+	xhr.open("GET", "obj.jsp", true);
+	xhr.send();
+	
+	//응답
+	xhr.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			//res = {} 형태로 왔다.
+			res = this.responseText;
+			
+			res = JSON.parse(res);
+			
+			code = `이름: ${res.name} <br> 나이: ${res.age} <br> 주소: ${res.addr} <br> 전화번호: ${res.tel} <br>`
+					
+			$('#result3').html(code);
+		}
+	}
+}
+
+
+obarrproc=()=>{
+	//요청
+	xhr.open("GET", "obarr.jsp", true);
+	xhr.send();
+	
+	//응답
+	xhr.onreadystatechange = function(){
+		if(this.readyState==4 && this.status==200){
+			//res = [{}, {}, ... {}] 형태로 왔다.
+			res = this.responseText;
+			res = JSON.parse(res);
+			
+			code = "";
+			
+			res.forEach((str, index)=>{
+				code +=`${index+1}번째 정보<br>`
+				code += `이름: ${str.name} <br>`;
+				code += `나이: ${str.age} <br>`;
+				code += `주소: ${str.addr} <br>`;
+				code += `전화번호: ${str.tel} <br><br>`;
+			})
+			
+			//jquery방식
+// 			$.each(res, function(i,v){
+// 				res[i].name
+// 				v.name
+// 			})
+			
+			$('#result4').html(code);
+		}
+	}
+}
+
+
+</script>
+
+
+<style>
+ #content {
+ 	display: flex;
+ 	flex-direction: row;
+}
+
+.box div .res{
+	flex : 25%;
+	border: 1px solid skyblue;
+	
+	box-sizing: border-box;
+}
+
+</style>
+</head>
+<body>
+<!-- 그냥 .res만 적었을때 작동안한건 외부css랑 충돌나서 안먹엇다 -->
+
+<div class="box">
+ <h4></h4>
+ <input type="button" value="text" onclick="textproc()">
+ <input type="button" value="arr" onclick="arrproc()">
+ <input type="button" value="jsonobj" onclick="objproc()">
+ <input type="button" value="jobarr" onclick="obarrproc()">
+ <br><br>
+ 
+<div id="content">
+ <div class = "res" id="result1"></div>
+ <div class = "res" id="result2"></div>
+ <div class = "res" id="result3"></div>
+ <div class = "res" id="result4"></div>
+</div>
+
+</div>
+</body>
+</html>
